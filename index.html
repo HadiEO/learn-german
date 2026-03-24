@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>German Vocabulary Builder</title>
+    <meta
+      name="description"
+      content="Printable German vocabulary study sheets with optional Bangla support."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">GitHub Pages MVP</p>
+        <h1>German Vocabulary Builder</h1>
+        <p class="hero-copy">
+          A printable starter set for building strong A2 and B1 vocabulary with
+          optional Bangla support. Each sheet is designed for page-by-page study
+          and quick printing.
+        </p>
+        <div class="hero-meta">
+          <div>
+            <span class="meta-label">Focus</span>
+            <strong>Vocabulary first</strong>
+          </div>
+          <div>
+            <span class="meta-label">Format</span>
+            <strong>Print-friendly study tables</strong>
+          </div>
+          <div>
+            <span class="meta-label">Current deck</span>
+            <strong id="word-count">0 words</strong>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="controls-panel no-print" aria-label="Study controls">
+          <div class="control-block">
+            <label class="toggle">
+              <input type="checkbox" id="bangla-toggle" checked />
+              <span>Show Bangla pronunciation and meaning</span>
+            </label>
+          </div>
+
+          <div class="control-block">
+            <label for="level-filter">Level focus</label>
+            <select id="level-filter">
+              <option value="all">All levels</option>
+              <option value="A2">A2 only</option>
+              <option value="B1">B1 only</option>
+            </select>
+          </div>
+
+          <div class="control-block">
+            <label for="rows-per-page">Rows per printed page</label>
+            <select id="rows-per-page">
+              <option value="10">10 rows</option>
+              <option value="12" selected>12 rows</option>
+              <option value="14">14 rows</option>
+              <option value="16">16 rows</option>
+            </select>
+          </div>
+
+          <button id="print-button" class="print-button" type="button">
+            Print study sheets
+          </button>
+        </section>
+
+        <section class="status-bar">
+          <div>
+            <span class="status-label">Visible words</span>
+            <strong id="visible-count">0</strong>
+          </div>
+          <div>
+            <span class="status-label">Pages</span>
+            <strong id="page-count">0</strong>
+          </div>
+          <div>
+            <span class="status-label">View</span>
+            <strong id="view-mode">Bangla enabled</strong>
+          </div>
+        </section>
+
+        <section id="sheet-container" class="sheet-stack" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
