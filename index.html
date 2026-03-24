@@ -22,10 +22,12 @@
         <p class="eyebrow">GitHub Pages MVP</p>
         <h1>German Vocabulary Builder</h1>
         <p class="hero-copy">
-          A printable starter set for building strong A2 and B1 vocabulary with
-          optional Bangla support. Each sheet is designed for page-by-page study
-          and quick printing.
+          A printable vocabulary deck for building strong A2 and B1 German with
+          optional Bangla support. The deck is growing toward a 1,000-word
+          goal, and the site shows the exact live count that is currently
+          loaded.
         </p>
+        <p class="hero-note" id="progress-note">Currently loaded: 0 words.</p>
         <div class="hero-meta">
           <div>
             <span class="meta-label">Focus</span>
@@ -38,6 +40,14 @@
           <div>
             <span class="meta-label">Current deck</span>
             <strong id="word-count">0 words</strong>
+          </div>
+          <div>
+            <span class="meta-label">Goal</span>
+            <strong id="goal-count">1,000 words</strong>
+          </div>
+          <div>
+            <span class="meta-label">Progress</span>
+            <strong id="progress-count">0%</strong>
           </div>
         </div>
       </header>
@@ -64,9 +74,15 @@
             <label for="rows-per-page">Rows per printed page</label>
             <select id="rows-per-page">
               <option value="10">10 rows</option>
-              <option value="12" selected>12 rows</option>
-              <option value="14">14 rows</option>
-              <option value="16">16 rows</option>
+              <option value="20" selected>20 rows</option>
+              <option value="30">30 rows</option>
+              <option value="40">40 rows</option>
+              <option value="50">50 rows</option>
+              <option value="60">60 rows</option>
+              <option value="70">70 rows</option>
+              <option value="80">80 rows</option>
+              <option value="90">90 rows</option>
+              <option value="100">100 rows</option>
             </select>
           </div>
 
@@ -95,6 +111,8 @@
     </div>
 
     <script src="data.js"></script>
+    <script src="extra-data.js"></script>
+    <script src="full-data.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

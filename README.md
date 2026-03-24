@@ -2,12 +2,18 @@
 
 Simple static site for GitHub Pages with printable German vocabulary study sheets.
 
-## MVP features
+## Current deck
+
+- 1,000 words currently loaded
+- 1,000-word long-term target
+- Live UI count so the page always shows the real loaded total
+
+## Features
 
 - Printable A4-style study sheets
 - Optional Bangla pronunciation and meaning columns
 - Level filter for A2 and B1 vocabulary
-- Rows-per-page control for compact or roomy print layouts
+- Rows-per-page control with `10, 20, 30, ... 100`
 
 ## Deploy to GitHub Pages
 

@@ -1,7 +1,7 @@
 const state = {
   showBangla: true,
   level: "all",
-  rowsPerPage: 12
+  rowsPerPage: 20
 };
 
 const banglaToggle = document.getElementById("bangla-toggle");
@@ -10,13 +10,24 @@ const rowsPerPage = document.getElementById("rows-per-page");
 const printButton = document.getElementById("print-button");
 const sheetContainer = document.getElementById("sheet-container");
 const wordCount = document.getElementById("word-count");
+const goalCount = document.getElementById("goal-count");
+const progressCount = document.getElementById("progress-count");
+const progressNote = document.getElementById("progress-note");
 const visibleCount = document.getElementById("visible-count");
 const pageCount = document.getElementById("page-count");
 const viewMode = document.getElementById("view-mode");
+const TARGET_WORD_COUNT = 1000;
+const numberFormatter = new Intl.NumberFormat("en-US");
 
-const vocabulary = Array.isArray(window.vocabularyData) ? window.vocabularyData : [];
+const curatedVocabulary = Array.isArray(window.vocabularyData) ? window.vocabularyData : [];
+const extraVocabulary = Array.isArray(window.extraVocabularyData) ? window.extraVocabularyData : [];
+const fullVocabulary = Array.isArray(window.fullVocabularyData) ? window.fullVocabularyData : [];
+const vocabulary = [...curatedVocabulary, ...extraVocabulary, ...fullVocabulary];
 
-wordCount.textContent = `${vocabulary.length} words`;
+wordCount.textContent = `${numberFormatter.format(vocabulary.length)} words`;
+goalCount.textContent = `${numberFormatter.format(TARGET_WORD_COUNT)} words`;
+progressCount.textContent = `${Math.round((vocabulary.length / TARGET_WORD_COUNT) * 100)}%`;
+progressNote.textContent = `Currently loaded: ${numberFormatter.format(vocabulary.length)} words. Target: ${numberFormatter.format(TARGET_WORD_COUNT)} words.`;
 
 banglaToggle.addEventListener("change", (event) => {
   state.showBangla = event.target.checked;
@@ -42,7 +53,7 @@ function renderSheets() {
     return state.level === "all" ? true : entry.level === state.level;
   });
 
-  visibleCount.textContent = String(filtered.length);
+  visibleCount.textContent = numberFormatter.format(filtered.length);
   viewMode.textContent = state.showBangla ? "Bangla enabled" : "Bangla hidden";
 
   if (!filtered.length) {
@@ -74,7 +85,7 @@ function createSheet(entries, index, totalPages) {
         <div>
           <h2 class="sheet-title">Study Sheet ${index + 1}</h2>
           <p class="sheet-subtitle">${escapeHtml(categories)}</p>
-          <p class="tagline">Levels: ${escapeHtml(levels)} • Starter pack from the 1,000-word target</p>
+          <p class="tagline">Levels: ${escapeHtml(levels)} • ${vocabulary.length}-word live deck on the path to ${numberFormatter.format(TARGET_WORD_COUNT)}</p>
         </div>
         <p class="sheet-page">Page ${index + 1} of ${totalPages}</p>
       </div>

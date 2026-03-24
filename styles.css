@@ -73,6 +73,13 @@ input {
   color: var(--muted);
 }
 
+.hero-note {
+  margin: 14px 0 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--accent-deep);
+}
+
 .hero-meta {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
